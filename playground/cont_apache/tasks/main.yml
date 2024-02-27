@@ -1,0 +1,9 @@
+---
+- name: "{{ cont_name }}" 
+  service:
+    name: httpd
+    state: "{{ cont_state }}"
+
+
+
+

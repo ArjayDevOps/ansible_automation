@@ -1,0 +1,7 @@
+---
+- name: Configure Apache File
+  ansible.builtin.lineinfile:
+    state: present
+    dest: /etc/httpd/conf/httpd.conf
+    regexp: "{{ conf_regexp }}"
+    line: "{{ conf_line }}"

@@ -1,0 +1,35 @@
+---
+#- name: Deploy Website on Apache Server
+ - hosts: web_server
+   gather_facts: false
+   become: true
+
+   roles:
+   - role: download_components
+     title_name: Git Package Installed
+     comp_name: git
+     comp_state: present
+
+   - role: checkout_repo
+
+   - role: download_components
+     title_name: Download Apache
+     comp_name: httpd
+     comp_state: latest
+   
+   - role: cont_apache
+     cont_name: Start Apache
+     cont_state: started
+
+   - role: conf_apache
+     conf_regexp: '^DocumentRoot "/var/www/html"' 
+     conf_line: 'DocumentRoot "/var/www/blogsite"'
+
+   - role: conf_apache
+     conf_regexp: '^<Directory "/var/www/html">'
+     conf_line: '<Directory "/var/www/blogsite">'
+
+   - role: cont_apache
+     cont_name: Restart Apache
+     cont_state: restarted
+

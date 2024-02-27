@@ -1,0 +1,5 @@
+---
+- name: "{{ title_name }}"
+  yum:
+    name: "{{ comp_name }}"
+    state: "{{ comp_state }}"

@@ -1,0 +1,6 @@
+---  
+  - name: Checkout git repo
+    ansible.builtin.git:
+      repo: https://github.com/ArjayDevOps/blogsite.git
+      dest: /var/www/blogsite
+      force: true
